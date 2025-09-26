@@ -1,7 +1,17 @@
-import "./App.css"
+import "./index.css"
+import { BrowserRouter, Routes, Route } from "react-router"
+import Confirm from "./pages/Confirm"
+import Request from "./pages/Request"
 
-function App() {
-  return <h1 className='text-3xl font-bold'>Vite + React</h1>
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Request />} />
+        <Route path='confirm' element={<Confirm />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App
