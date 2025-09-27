@@ -34,5 +34,6 @@ export const Error: Story = {
     error: true,
     disabled: false,
     variant: "outlined",
+    helperText: "This field is required",
   },
 }

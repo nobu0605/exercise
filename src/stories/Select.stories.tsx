@@ -18,7 +18,6 @@ export const Default: Story = {
     id: "select",
     labelId: "select-label",
     label: "Select an option",
-    required: true,
     menuItems: [
       { value: "option1", label: "Option 1" },
       { value: "option2", label: "Option 2" },
@@ -39,7 +38,6 @@ export const Error: Story = {
     id: "select",
     labelId: "select-label",
     label: "Select an option",
-    required: true,
     menuItems: [
       { value: "option1", label: "Option 1" },
       { value: "option2", label: "Option 2" },
@@ -47,6 +45,7 @@ export const Error: Story = {
     ],
     handleChange: () => {},
     error: true,
+    errorText: "This field is required",
   },
   render: (args) => (
     <div style={{ width: "200px" }}>
