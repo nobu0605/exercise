@@ -9,6 +9,7 @@ const meta = {
   component: ReproduceStep,
   argTypes: {
     removeStep: { action: "clicked" },
+    onChange: { action: "changed" },
   },
 } satisfies Meta<typeof ReproduceStep>
 
