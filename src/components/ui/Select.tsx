@@ -1,7 +1,4 @@
-import { Select as MuiSelect } from "@mui/material"
-import FormControl from "@mui/material/FormControl"
-import InputLabel from "@mui/material/InputLabel"
-import MenuItem from "@mui/material/MenuItem"
+import { Select as MuiSelect, FormControl, InputLabel, MenuItem } from "@mui/material"
 import type { SelectChangeEvent } from "@mui/material"
 
 type MenuItemType = {
