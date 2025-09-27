@@ -1,12 +1,8 @@
-import { Select } from "../components/ui/Select"
+import { Select } from "./Select"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 const meta = {
-  title: "UI/Select",
   component: Select,
-  parameters: {
-    layout: "centered",
-  },
 } satisfies Meta<typeof Select>
 
 export default meta
@@ -18,7 +14,6 @@ export const Default: Story = {
     id: "select",
     labelId: "select-label",
     label: "Select an option",
-    required: true,
     menuItems: [
       { value: "option1", label: "Option 1" },
       { value: "option2", label: "Option 2" },
@@ -39,7 +34,6 @@ export const Error: Story = {
     id: "select",
     labelId: "select-label",
     label: "Select an option",
-    required: true,
     menuItems: [
       { value: "option1", label: "Option 1" },
       { value: "option2", label: "Option 2" },
@@ -47,6 +41,7 @@ export const Error: Story = {
     ],
     handleChange: () => {},
     error: true,
+    errorText: "This field is required",
   },
   render: (args) => (
     <div style={{ width: "200px" }}>
