@@ -2,7 +2,7 @@ import { TextField as MuiTextField } from "@mui/material"
 
 type Props = {
   id: string
-  name: string
+  name?: string
   label: string
   error?: boolean
   variant?: "outlined" | "standard" | "filled"

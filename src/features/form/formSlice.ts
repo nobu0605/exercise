@@ -22,7 +22,6 @@ const formSlice = createSlice({
   initialState,
   reducers: {
     saveForm: (state, action: PayloadAction<RequestFormValues>) => {
-      console.log("formData slice: ", action.payload)
       state.formData = action.payload
     },
     clearForm: (state) => {

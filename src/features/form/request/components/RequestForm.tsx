@@ -92,9 +92,9 @@ export const RequestForm = () => {
           render={({ field, fieldState }) => (
             <Select
               value={field.value}
-              id='issue'
-              labelId='issue'
-              label='Issue'
+              id='issueType'
+              labelId='issueType'
+              label='Issue type'
               menuItems={issueOptions}
               handleChange={field.onChange}
               error={!!fieldState.error}
@@ -124,11 +124,21 @@ export const RequestForm = () => {
       <fieldset className='flex flex-col gap-4'>
         <legend className='mb-2'>Steps to Reproduce</legend>
         {fields.map((step, index) => (
-          <ReproduceStep
+          <Controller
+            name={`stepsToReproduce.${index}.description`}
             control={control}
-            key={step.id}
-            index={index}
-            removeStep={() => remove(index)}
+            render={({ field, fieldState }) => (
+              <ReproduceStep
+                key={step.id}
+                index={index}
+                removeStep={() => remove(index)}
+                onChange={field.onChange}
+                error={!!fieldState.error}
+                helperText={
+                  fieldState.error ? `Step ${index + 1} ${fieldState.error?.message}` : ""
+                }
+              />
+            )}
           />
         ))}
         <div className='flex justify-end'>

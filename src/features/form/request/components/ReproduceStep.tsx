@@ -1,16 +1,16 @@
 import CancelIcon from "@mui/icons-material/Cancel"
 import { IconButton } from "@mui/material"
-import { Controller, type Control } from "react-hook-form"
 import { TextField } from "../../../../components/ui/TextField"
-import type { RequestFormValues } from "../schema"
 
 type Props = {
-  control: Control<RequestFormValues>
   index: number
   removeStep: () => void
+  onChange?: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined
+  error?: boolean | undefined
+  helperText?: string | undefined
 }
 
-export const ReproduceStep = ({ control, index, removeStep }: Props) => {
+export const ReproduceStep = ({ index, removeStep, onChange, error, helperText }: Props) => {
   return (
     <div className='relative flex flex-row'>
       {index > 0 && (
@@ -20,22 +20,15 @@ export const ReproduceStep = ({ control, index, removeStep }: Props) => {
           </IconButton>
         </div>
       )}
-      <Controller
-        name={`stepsToReproduce.${index}.description`}
-        control={control}
-        render={({ field, fieldState }) => (
-          <TextField
-            onChange={field.onChange}
-            label={`Step ${index + 1}`}
-            id={`steps.${index}`}
-            name={`steps.${index}`}
-            minRows={4}
-            multiline
-            fullWidth
-            error={!!fieldState.error}
-            helperText={fieldState.error ? `Step ${index + 1} ${fieldState.error?.message}` : ""}
-          />
-        )}
+      <TextField
+        onChange={onChange}
+        label={`Step ${index + 1}`}
+        id={`stepsToReproduce.${index}`}
+        minRows={4}
+        multiline
+        fullWidth
+        error={error}
+        helperText={helperText}
       />
     </div>
   )

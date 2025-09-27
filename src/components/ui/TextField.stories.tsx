@@ -1,12 +1,8 @@
-import { TextField } from "../components/ui/TextField"
+import { TextField } from "./TextField"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 
 const meta = {
-  title: "UI/TextField",
   component: TextField,
-  parameters: {
-    layout: "centered",
-  },
   argTypes: {
     onClick: { action: "clicked" },
   },
