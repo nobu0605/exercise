@@ -11,7 +11,7 @@ import tseslint from "typescript-eslint"
 export default defineConfig([
   globalIgnores(["dist"]),
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
+    files: ["**/*.{js,jsx,ts,tsx,stories.ts}"],
     extends: [
       js.configs.recommended,
       prettier,
