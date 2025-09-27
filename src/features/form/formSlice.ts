@@ -13,7 +13,7 @@ type FormState = {
 const initialState: FormState = {
   name: "",
   email: "",
-  issueType: "",
+  issueType: IssueType.Bug,
   tags: [],
   stepsToReproduce: "",
 }

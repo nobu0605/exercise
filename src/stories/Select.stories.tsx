@@ -1,0 +1,56 @@
+import { Select } from "../components/ui/Select"
+import type { Meta, StoryObj } from "@storybook/react-vite"
+
+const meta = {
+  title: "UI/Select",
+  component: Select,
+  parameters: {
+    layout: "centered",
+  },
+} satisfies Meta<typeof Select>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Default: Story = {
+  args: {
+    value: "",
+    id: "select",
+    labelId: "select-label",
+    label: "Select an option",
+    required: true,
+    menuItems: [
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+    handleChange: () => {},
+  },
+  render: (args) => (
+    <div style={{ width: "200px" }}>
+      <Select {...args} />
+    </div>
+  ),
+}
+
+export const Error: Story = {
+  args: {
+    value: "",
+    id: "select",
+    labelId: "select-label",
+    label: "Select an option",
+    required: true,
+    menuItems: [
+      { value: "option1", label: "Option 1" },
+      { value: "option2", label: "Option 2" },
+      { value: "option3", label: "Option 3" },
+    ],
+    handleChange: () => {},
+    error: true,
+  },
+  render: (args) => (
+    <div style={{ width: "200px" }}>
+      <Select {...args} />
+    </div>
+  ),
+}

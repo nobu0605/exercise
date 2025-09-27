@@ -14,7 +14,7 @@ type Props = {
 export function Button({
   children,
   variant = "contained",
-  size,
+  size = "medium",
   color = "primary",
   disabled,
   onClick,
