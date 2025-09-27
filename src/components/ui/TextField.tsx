@@ -9,7 +9,12 @@ type Props = {
   disabled?: boolean
   onClick?: () => void
   type?: string
-  required?: boolean
+  helperText?: string
+  value?: string | number
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  minRows?: number
+  multiline?: boolean
+  fullWidth?: boolean
 }
 
 export const TextField = ({
@@ -19,9 +24,14 @@ export const TextField = ({
   error,
   disabled,
   onClick,
-  variant = "outlined",
+  variant,
   type = "text",
-  required,
+  helperText,
+  value,
+  onChange,
+  minRows,
+  multiline,
+  fullWidth,
 }: Props) => {
   return (
     <MuiTextField
@@ -33,7 +43,12 @@ export const TextField = ({
       onClick={onClick}
       variant={variant}
       type={type}
-      required={required}
+      helperText={helperText}
+      value={value}
+      onChange={onChange}
+      minRows={minRows}
+      multiline={multiline}
+      fullWidth={fullWidth}
     />
   )
 }
