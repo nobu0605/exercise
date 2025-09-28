@@ -79,7 +79,7 @@ export const RequestForm = () => {
 
     window.addEventListener("beforeunload", handleBeforeUnload)
     return () => window.removeEventListener("beforeunload", handleBeforeUnload)
-  }, [getValues()])
+  }, [isFormChanged])
 
   return (
     <>
