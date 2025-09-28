@@ -31,6 +31,9 @@ describe("ReproduceStep component", () => {
   it("remove step", () => {
     render(<StepsToReproduceStory />)
 
+    const initialTextFields = screen.getAllByRole("textbox")
+    expect(initialTextFields.length).toBe(2)
+
     const removeButton = screen.getByLabelText("Remove step 2")
     fireEvent.click(removeButton)
 
