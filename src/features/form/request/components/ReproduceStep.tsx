@@ -3,6 +3,7 @@ import { IconButton } from "@mui/material"
 import { TextField } from "../../../../components/ui/TextField"
 
 type Props = {
+  value: string
   index: number
   removeStep: () => void
   onChange?: ((e: React.ChangeEvent<HTMLInputElement>) => void) | undefined
@@ -10,7 +11,7 @@ type Props = {
   helperText?: string | undefined
 }
 
-export const ReproduceStep = ({ index, removeStep, onChange, error, helperText }: Props) => {
+export const ReproduceStep = ({ value, index, removeStep, onChange, error, helperText }: Props) => {
   return (
     <div className='relative flex flex-row'>
       {index > 0 && (
@@ -21,6 +22,7 @@ export const ReproduceStep = ({ index, removeStep, onChange, error, helperText }
         </div>
       )}
       <TextField
+        value={value}
         onChange={onChange}
         label={`Step ${index + 1}`}
         id={`stepsToReproduce.${index}`}

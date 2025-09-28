@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { IssueType } from "../constants/form"
+import { IssueType } from "./constants/form"
 
 export const requestSchema = z.object({
   name: z.string().min(1, "Name is required"),

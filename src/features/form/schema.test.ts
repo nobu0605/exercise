@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest"
 import * as z from "zod"
-import { IssueType } from "../constants/form"
+import { IssueType } from "./constants/form"
 import { requestSchema } from "./schema"
 
 describe("Request Schema", () => {
