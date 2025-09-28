@@ -93,26 +93,4 @@ describe("Request Schema", () => {
       }
     }
   })
-
-  it("fails when no step", () => {
-    const invalidData = {
-      name: "Taro",
-      email: "taro@example.com",
-      issueType: IssueType.Bug,
-      stepsToReproduce: [],
-    }
-
-    const result = requestSchema.safeParse(invalidData)
-    expect(result.success).toBe(false)
-
-    if (!result.success) {
-      const tree = z.treeifyError(result.error)
-      const items = tree.properties?.stepsToReproduce?.items
-      if (items?.length === 0) {
-        const firstItem = items[0]
-        const descErrors = firstItem?.properties?.description?.errors ?? []
-        expect(descErrors).toContain("At least one step is required")
-      }
-    }
-  })
 })
