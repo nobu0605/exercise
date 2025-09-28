@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { Button } from "../../../../components/ui/Button"
 import { ReproduceStep } from "./ReproduceStep"
-
 import type { StepsToReproduce } from "../../types/form"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 

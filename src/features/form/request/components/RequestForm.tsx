@@ -3,17 +3,13 @@ import { Chip, TextField as MuiTextField } from "@mui/material"
 import Autocomplete from "@mui/material/Autocomplete"
 import { useEffect } from "react"
 import { useForm, Controller, useFieldArray } from "react-hook-form"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router"
 import { Button } from "../../../../components/ui/Button"
 import { Select } from "../../../../components/ui/Select"
 import { TextField } from "../../../../components/ui/TextField"
-import { IssueType } from "../../constants/form"
-import { saveForm } from "../../formSlice"
+import { IssueType, tagOptions } from "../../constants/form"
 import { requestSchema } from "../../schema"
 import { isFormDirty } from "../../utils/form"
 import { ReproduceStep } from "./ReproduceStep"
-import type { AppDispatch, RootState } from "../../../../store"
 import type { RequestFormValues } from "../../schema"
 
 const issueOptions = [
@@ -22,23 +18,12 @@ const issueOptions = [
   { value: IssueType.Inquiry, label: IssueType.Inquiry },
 ]
 
-const tagOptions = [
-  "UI",
-  "UX",
-  "Performance",
-  "Bug",
-  "Feature Request",
-  "Enhancement",
-  "Documentation",
-  "Security",
-  "Other",
-]
+type Props = {
+  formData: RequestFormValues | null
+  onSubmit: (data: RequestFormValues) => void
+}
 
-export const RequestForm = () => {
-  const formData = useSelector((state: RootState) => state.form.formData)
-  const navigate = useNavigate()
-  const dispatch = useDispatch<AppDispatch>()
-
+export const RequestForm = ({ formData, onSubmit }: Props) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -61,11 +46,6 @@ export const RequestForm = () => {
     control,
     name: "stepsToReproduce",
   })
-
-  const onSubmit = (data: RequestFormValues) => {
-    dispatch(saveForm(data))
-    navigate("/confirm")
-  }
 
   const isFormChanged = isFormDirty(getValues())
 
@@ -94,6 +74,7 @@ export const RequestForm = () => {
             helperText={errors.name?.message}
             error={!!errors.name}
             onChange={(e) => setValue("name", e.target.value)}
+            slotProps={{ htmlInput: { "aria-label": "Name input field" } }}
           />
           <TextField
             id='email'
@@ -104,6 +85,7 @@ export const RequestForm = () => {
             helperText={errors.email?.message}
             error={!!errors.email}
             onChange={(e) => setValue("email", e.target.value)}
+            slotProps={{ htmlInput: { "aria-label": "Email input field" } }}
           />
         </fieldset>
 
