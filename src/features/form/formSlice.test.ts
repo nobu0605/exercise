@@ -1,6 +1,6 @@
 import { IssueType } from "./constants/form"
 import formReducer, { saveForm, clearForm } from "./formSlice"
-import type { RequestFormValues } from "../form/request/schema"
+import type { RequestFormValues } from "./schema"
 
 describe("formSlice", () => {
   const initialState = {
@@ -9,7 +9,7 @@ describe("formSlice", () => {
       email: "",
       issueType: IssueType.Bug,
       tags: [],
-      stepsToReproduce: [],
+      stepsToReproduce: [{ description: "" }],
     },
   }
 

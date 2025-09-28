@@ -1,19 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { IssueType } from "./constants/form"
-import type { RequestFormValues } from "../form/request/schema"
+import type { RequestFormValues } from "./schema"
 import type { PayloadAction } from "@reduxjs/toolkit"
 
 type FormState = {
   formData: RequestFormValues
 }
 
-const initialState: FormState = {
+export const initialState: FormState = {
   formData: {
     name: "",
     email: "",
     issueType: IssueType.Bug,
     tags: [],
-    stepsToReproduce: [],
+    stepsToReproduce: [{ description: "" }],
   },
 }
 

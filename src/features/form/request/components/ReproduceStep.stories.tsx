@@ -18,6 +18,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
+    value: "",
     index: 0,
     removeStep: () => {},
     onChange: () => {},
@@ -28,6 +29,7 @@ export const Default: Story = {
 
 export const Error: Story = {
   args: {
+    value: "",
     index: 0,
     removeStep: () => {},
     onChange: () => {},
@@ -46,8 +48,9 @@ const StepsList = ({ initialSteps }: Props) => {
   return (
     <fieldset className='flex flex-col gap-4 w-96'>
       <legend className='mb-2'>Steps to Reproduce</legend>
-      {steps.map((_, index) => (
+      {steps.map((step, index) => (
         <ReproduceStep
+          value={step.description}
           key={index}
           index={index}
           removeStep={() => {
@@ -79,6 +82,7 @@ const StepsList = ({ initialSteps }: Props) => {
 
 export const StepsToReproduceStory: Story = {
   args: {
+    value: "",
     index: 0,
     removeStep: () => {},
     onChange: () => {},
@@ -92,6 +96,7 @@ export const StepsToReproduceStory: Story = {
 
 export const MaxStepsToReproduce: Story = {
   args: {
+    value: "",
     index: 0,
     removeStep: () => {},
     onChange: () => {},
