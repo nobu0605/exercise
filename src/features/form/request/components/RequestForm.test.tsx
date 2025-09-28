@@ -1,5 +1,6 @@
 import { composeStories } from "@storybook/react"
-import { render, screen, fireEvent } from "@testing-library/react"
+import { render, screen, act } from "@testing-library/react"
+import { createMemoryRouter, RouterProvider } from "react-router"
 import * as stories from "./RequestForm.stories"
 
 const { Default, Errors, FilledForm } = composeStories(stories)
@@ -28,13 +29,15 @@ describe("RequestForm component", () => {
   })
 
   it("shows validation errors in Errors story after submit", async () => {
-    render(<Errors />)
+    const router = createMemoryRouter([{ index: true, element: <Errors /> }])
+    const { container } = render(<RouterProvider router={router} />)
 
-    const button = screen.getByRole("button", { name: /continue/i })
-    fireEvent.click(button)
+    await act(async () => {
+      await Errors.play?.({ canvasElement: container })
+    })
 
-    expect(await screen.findByText(/name is required/i)).toBeInTheDocument()
-    expect(await screen.findByText(/Invalid email/i)).toBeInTheDocument()
-    expect(await screen.findByText(/description is required/i)).toBeInTheDocument()
+    expect(screen.getByText("Name is required")).toBeInTheDocument()
+    expect(screen.getByText("Invalid email")).toBeInTheDocument()
+    expect(screen.getByText("Step 1 description is required")).toBeInTheDocument()
   })
 })
