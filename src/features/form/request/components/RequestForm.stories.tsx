@@ -2,6 +2,7 @@ import { userEvent, within } from "storybook/test"
 import { IssueType, tagOptions } from "../../constants/form"
 import { RequestForm } from "./RequestForm"
 import type { Meta, StoryObj } from "@storybook/react-vite"
+import type { ReactNode } from "react"
 
 const meta = {
   component: RequestForm,
@@ -11,7 +12,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 type Props = {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const RequestFormLayout = ({ children }: Props) => (
