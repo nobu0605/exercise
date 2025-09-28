@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert"
-import { useEffect, useState } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { Button } from "../../../../components/ui/Button"
@@ -26,7 +26,7 @@ export const ConfirmBody = () => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload)
   }, [isFormChanged])
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setShowSubmissionAlert(true)
 

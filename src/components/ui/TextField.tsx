@@ -1,4 +1,5 @@
 import { TextField as MuiTextField } from "@mui/material"
+import type { TextFieldProps } from "@mui/material/TextField"
 
 type Props = {
   id: string
@@ -15,6 +16,7 @@ type Props = {
   minRows?: number
   multiline?: boolean
   fullWidth?: boolean
+  slotProps?: TextFieldProps["slotProps"]
 }
 
 export const TextField = ({
@@ -32,6 +34,7 @@ export const TextField = ({
   minRows,
   multiline,
   fullWidth,
+  slotProps,
 }: Props) => {
   return (
     <MuiTextField
@@ -49,6 +52,7 @@ export const TextField = ({
       minRows={minRows}
       multiline={multiline}
       fullWidth={fullWidth}
+      slotProps={slotProps}
     />
   )
 }
