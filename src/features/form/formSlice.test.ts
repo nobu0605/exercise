@@ -1,0 +1,47 @@
+import { IssueType } from "./constants/form"
+import formReducer, { saveForm, clearForm } from "./formSlice"
+import type { RequestFormValues } from "../form/request/schema"
+
+describe("formSlice", () => {
+  const initialState = {
+    formData: {
+      name: "",
+      email: "",
+      issueType: IssueType.Bug,
+      tags: [],
+      stepsToReproduce: [],
+    },
+  }
+
+  it("should return the initial state", () => {
+    expect(formReducer(undefined, { type: "" })).toEqual(initialState)
+  })
+
+  it("should handle saveForm", () => {
+    const payload: RequestFormValues = {
+      name: "Kevin",
+      email: "kevin@gmail.com",
+      issueType: IssueType.Feature,
+      tags: ["UI", "Performance"],
+      stepsToReproduce: [{ description: "Step 1" }],
+    }
+
+    const updatedState = formReducer(initialState, saveForm(payload))
+    expect(updatedState.formData).toEqual(payload)
+  })
+
+  it("should handle clearForm", () => {
+    const filledState = {
+      formData: {
+        name: "John",
+        email: "john@gmail.com",
+        issueType: IssueType.Inquiry,
+        tags: ["Bug"],
+        stepsToReproduce: [{ description: "Do something" }],
+      },
+    }
+
+    const nextState = formReducer(filledState, clearForm())
+    expect(nextState).toEqual(initialState)
+  })
+})
