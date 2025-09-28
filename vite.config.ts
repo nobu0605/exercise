@@ -13,7 +13,7 @@ export default defineConfig({
       provider: "v8",
       include: ["src/features/**", "src/components/ui/*.{ts,tsx}", "src/pages/**"],
       exclude: ["src/**/*.stories.{ts,tsx}"],
-      reporter: ["text"],
+      reporter: ["text", "json-summary", "json"],
     },
   },
 })
