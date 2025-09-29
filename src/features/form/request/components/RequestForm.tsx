@@ -69,6 +69,7 @@ export const RequestForm = ({ formData, onSubmit }: Props) => {
             error={!!errors.name}
             onChange={(e) => setValue("name", e.target.value)}
             slotProps={{ htmlInput: { "aria-label": "Name input field" } }}
+            required
           />
           <TextField
             id='email'
@@ -80,6 +81,7 @@ export const RequestForm = ({ formData, onSubmit }: Props) => {
             error={!!errors.email}
             onChange={(e) => setValue("email", e.target.value)}
             slotProps={{ htmlInput: { "aria-label": "Email input field" } }}
+            required
           />
         </fieldset>
 
@@ -98,12 +100,14 @@ export const RequestForm = ({ formData, onSubmit }: Props) => {
                 handleChange={field.onChange}
                 error={!!fieldState.error}
                 errorText={fieldState.error?.message}
+                required
               />
             )}
           />
           <Autocomplete
             multiple
             id='tags'
+            aria-label='Tags selection'
             value={watch("tags")}
             onChange={(_, newValue) => {
               setValue("tags", newValue)

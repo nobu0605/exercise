@@ -11,7 +11,7 @@ type Props = {
   type?: "submit" | "reset" | "button" | undefined
 }
 
-export function Button({
+export const Button = ({
   children,
   variant = "contained",
   size = "medium",
@@ -19,7 +19,7 @@ export function Button({
   disabled,
   onClick,
   type,
-}: Props) {
+}: Props) => {
   return (
     <MuiButton
       variant={variant}

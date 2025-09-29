@@ -100,7 +100,11 @@ export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
       </form>
 
       {showSubmissionAlert && (
-        <div className='absolute top-0 left-0 w-500px w-full flex justify-center mt-4'>
+        <div
+          role='status'
+          aria-live='polite'
+          className='absolute top-0 left-0 w-500px w-full flex justify-center mt-4'
+        >
           <Alert severity='success' onClose={() => setShowSubmissionAlert(false)}>
             Your request has been submitted successfully!
           </Alert>
