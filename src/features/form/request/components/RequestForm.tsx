@@ -19,7 +19,7 @@ const issueOptions = [
 ]
 
 type Props = {
-  formData: RequestFormValues | null
+  formData: RequestFormValues
   onSubmit: (data: RequestFormValues) => void
 }
 
@@ -33,13 +33,7 @@ export const RequestForm = ({ formData, onSubmit }: Props) => {
     getValues,
   } = useForm<RequestFormValues>({
     resolver: zodResolver(requestSchema),
-    defaultValues: formData || {
-      name: "",
-      email: "",
-      issueType: IssueType.Bug,
-      tags: [],
-      stepsToReproduce: [{ description: "" }],
-    },
+    defaultValues: formData,
   })
 
   const { fields, append, remove } = useFieldArray({

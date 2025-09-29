@@ -1,5 +1,5 @@
 import { userEvent, within } from "storybook/test"
-import { IssueType, tagOptions } from "../../constants/form"
+import { initialFormData, IssueType, tagOptions } from "../../constants/form"
 import { RequestForm } from "./RequestForm"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import type { ReactNode } from "react"
@@ -23,7 +23,7 @@ const RequestFormLayout = ({ children }: Props) => (
 
 export const Default: Story = {
   args: {
-    formData: null,
+    formData: initialFormData,
     onSubmit: () => {},
   },
   render: (args) => {

@@ -1,18 +1,8 @@
 import { IssueType } from "./constants/form"
-import formReducer, { saveForm, clearForm } from "./formSlice"
+import formReducer, { saveForm, clearForm, initialState } from "./formSlice"
 import type { RequestFormValues } from "./schema"
 
 describe("formSlice", () => {
-  const initialState = {
-    formData: {
-      name: "",
-      email: "",
-      issueType: IssueType.Bug,
-      tags: [],
-      stepsToReproduce: [{ description: "" }],
-    },
-  }
-
   it("should return the initial state", () => {
     expect(formReducer(undefined, { type: "" })).toEqual(initialState)
   })
@@ -42,6 +32,8 @@ describe("formSlice", () => {
     }
 
     const nextState = formReducer(filledState, clearForm())
-    expect(nextState).toEqual(initialState)
+    expect(nextState).toEqual({
+      ...initialState,
+    })
   })
 })

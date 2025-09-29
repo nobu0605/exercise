@@ -1,3 +1,5 @@
+import type { RequestFormValues } from "../schema"
+
 export const IssueType = {
   Bug: "Bug Report",
   Feature: "Feature Request",
@@ -17,3 +19,11 @@ export const tagOptions = [
   "Security",
   "Other",
 ]
+
+export const initialFormData: RequestFormValues = {
+  name: "",
+  email: "",
+  issueType: IssueType.Bug,
+  tags: [],
+  stepsToReproduce: [{ description: "" }],
+}

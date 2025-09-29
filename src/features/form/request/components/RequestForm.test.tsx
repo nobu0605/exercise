@@ -1,6 +1,7 @@
 import { composeStories } from "@storybook/react"
 import { render, screen, act } from "@testing-library/react"
 import { createMemoryRouter, RouterProvider } from "react-router"
+import { IssueType } from "../../constants/form"
 import * as stories from "./RequestForm.stories"
 
 const { Default, Errors, FilledForm } = composeStories(stories)
@@ -11,7 +12,7 @@ describe("RequestForm component", () => {
 
     expect(screen.getByLabelText(/Name input field/i)).toHaveValue("")
     expect(screen.getByLabelText(/Email input field/i)).toHaveValue("")
-    expect(screen.getByRole("combobox", { name: /issue type/i })).toHaveTextContent("Bug Report")
+    expect(screen.getByRole("combobox", { name: /issue type/i })).toHaveTextContent(IssueType.Bug)
     expect(screen.getByLabelText(/Step 1 input field/i)).toHaveValue("")
     expect(screen.getByRole("button", { name: /continue/i })).toBeInTheDocument()
   })
@@ -21,7 +22,7 @@ describe("RequestForm component", () => {
 
     expect(screen.getByLabelText(/Name input field/i)).toHaveValue("Name")
     expect(screen.getByLabelText(/Email input field/i)).toHaveValue("test@gmail.com")
-    expect(screen.getByRole("combobox", { name: /issue type/i })).toHaveTextContent("Bug Report")
+    expect(screen.getByRole("combobox", { name: /issue type/i })).toHaveTextContent(IssueType.Bug)
     expect(screen.getByText("UI")).toBeInTheDocument()
     expect(screen.getByText("Bug")).toBeInTheDocument()
     expect(screen.getByLabelText(/Step 1 input field/i)).toHaveValue("Step 1")

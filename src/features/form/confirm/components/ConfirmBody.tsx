@@ -1,17 +1,19 @@
 import Alert from "@mui/material/Alert"
 import { useEffect, useState, type FormEvent } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { Button } from "../../../../components/ui/Button"
-import { clearForm } from "../../formSlice"
 import { isFormDirty } from "../../utils/form"
-import type { AppDispatch, RootState } from "../../../../store"
+import type { RequestFormValues } from "../../schema"
 
-export const ConfirmBody = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const formData = useSelector((state: RootState) => state.form.formData)
+type Props = {
+  formData: RequestFormValues
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void
+}
+
+export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
   const navigate = useNavigate()
   const [showSubmissionAlert, setShowSubmissionAlert] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const isFormChanged = isFormDirty(formData)
 
   useEffect(() => {
@@ -26,19 +28,28 @@ export const ConfirmBody = () => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload)
   }, [isFormChanged])
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setShowSubmissionAlert(true)
+  if (isFormChanged === false && !isSubmitted) {
+    return (
+      <div className='flex flex-col gap-4'>
+        <p className='text-red-500'>No form data found. Please start again.</p>
+        <div className='flex justify-start'>
+          <Button color='inherit' onClick={() => navigate("/")}>
+            Back
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
-    setTimeout(() => {
-      dispatch(clearForm())
-      navigate("/")
-    }, 1500)
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
+    handleSubmit(e)
+    setIsSubmitted(true)
+    setShowSubmissionAlert(true)
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className='flex flex-col gap-4 text-lg'>
           <section className='flex flex-col gap-2'>
             <h2 className='text-lg font-semibold'>Personal Information</h2>
