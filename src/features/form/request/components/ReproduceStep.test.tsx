@@ -2,7 +2,7 @@ import { composeStories } from "@storybook/react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import * as stories from "./ReproduceStep.stories"
 
-const { Default, NoFieldValueError, StepsToReproduceStory, MaxStepsToReproduce } =
+const { Default, RequiredError, StepsToReproduceStory, MaxStepsToReproduce } =
   composeStories(stories)
 
 describe("ReproduceStep component", () => {
@@ -12,7 +12,7 @@ describe("ReproduceStep component", () => {
   })
 
   it("shows required error", () => {
-    render(<NoFieldValueError />)
+    render(<RequiredError />)
     expect(screen.getByText("This field is required")).toBeInTheDocument()
   })
 

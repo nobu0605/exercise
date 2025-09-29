@@ -26,7 +26,7 @@ export const Default: Story = {
   },
 }
 
-export const NoFieldValueError: Story = {
+export const RequiredError: Story = {
   args: {
     value: "",
     index: 0,
