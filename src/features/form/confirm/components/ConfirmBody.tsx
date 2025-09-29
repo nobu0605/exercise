@@ -28,7 +28,7 @@ export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload)
   }, [isFormChanged])
 
-  if (isFormChanged === false && !isSubmitted) {
+  if (!formData || (isFormChanged === false && !isSubmitted)) {
     return (
       <div className='flex flex-col gap-4'>
         <p className='text-red-500'>No form data found. Please start again.</p>
