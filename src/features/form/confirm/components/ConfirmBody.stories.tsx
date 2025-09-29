@@ -1,4 +1,4 @@
-import { initialFormData, IssueType } from "../../constants/form"
+import { initialFormData, IssueType, tagOptions } from "../../constants/form"
 import { ConfirmBody } from "./ConfirmBody"
 import type { Meta, StoryObj } from "@storybook/react-vite"
 import type { ReactNode } from "react"
@@ -26,7 +26,7 @@ export const Default: Story = {
       name: "Kevin",
       email: "kevin@example.com",
       issueType: IssueType.Bug,
-      tags: ["UI", "Bug"],
+      tags: [tagOptions[0], tagOptions[3]],
       stepsToReproduce: [
         { description: "Open the app" },
         { description: "Click on the button" },
