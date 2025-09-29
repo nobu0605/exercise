@@ -15,8 +15,6 @@ export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
   const [showSubmissionAlert, setShowSubmissionAlert] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const isFormChanged = isFormDirty(formData)
-  console.log("ConfirmBody formData:", formData)
-  console.log("isFormDirty:", isFormDirty(formData))
 
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
