@@ -14,7 +14,7 @@ type Props = {
   children: ReactNode
 }
 
-const RequestFormLayout = ({ children }: Props) => (
+const ConfirmBodyLayout = ({ children }: Props) => (
   <div className='flex min-h-screen  justify-center'>
     <div className='w-full md:w-1/2 lg:w-1/3 p-10'>{children}</div>
   </div>
@@ -37,9 +37,9 @@ export const Default: Story = {
   },
   render: (args) => {
     return (
-      <RequestFormLayout>
+      <ConfirmBodyLayout>
         <ConfirmBody formData={args.formData} handleSubmit={args.handleSubmit} />
-      </RequestFormLayout>
+      </ConfirmBodyLayout>
     )
   },
 }
@@ -51,9 +51,9 @@ export const NoFormData: Story = {
   },
   render: (args) => {
     return (
-      <RequestFormLayout>
+      <ConfirmBodyLayout>
         <ConfirmBody formData={args.formData} handleSubmit={args.handleSubmit} />
-      </RequestFormLayout>
+      </ConfirmBodyLayout>
     )
   },
 }
