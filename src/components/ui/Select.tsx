@@ -21,6 +21,7 @@ type Props = {
   menuItems: MenuItemType[]
   error?: boolean
   errorText?: string
+  required?: boolean
 }
 
 export const Select = ({
@@ -32,11 +33,14 @@ export const Select = ({
   menuItems,
   error,
   errorText,
+  required,
 }: Props) => {
   return (
     <>
       <FormControl fullWidth error={error}>
-        <InputLabel id={labelId}>{label}</InputLabel>
+        {/* If the field is required, visually indicate it by appending "*" to the label. 
+        This improves usability while keeping validation handled by react-hook-form + Zod. */}
+        <InputLabel id={labelId}>{required && label ? `${label} *` : label}</InputLabel>
         <MuiSelect labelId={labelId} id={id} value={value} label={label} onChange={handleChange}>
           {menuItems.map((item) => (
             <MenuItem key={item.value} value={item.value}>

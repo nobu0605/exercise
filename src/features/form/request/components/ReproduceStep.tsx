@@ -32,6 +32,7 @@ export const ReproduceStep = ({ value, index, removeStep, onChange, error, helpe
         error={error}
         helperText={helperText}
         slotProps={{ htmlInput: { "aria-label": `Step ${index + 1} input field` } }}
+        required
       />
     </div>
   )

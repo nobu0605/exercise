@@ -17,6 +17,7 @@ type Props = {
   multiline?: boolean
   fullWidth?: boolean
   slotProps?: TextFieldProps["slotProps"]
+  required?: boolean
 }
 
 export const TextField = ({
@@ -35,12 +36,15 @@ export const TextField = ({
   multiline,
   fullWidth,
   slotProps,
+  required,
 }: Props) => {
   return (
     <MuiTextField
       id={id}
       name={name}
-      label={label}
+      // If the field is required, visually indicate it by appending "*" to the label.
+      // This improves usability while keeping validation handled by react-hook-form + Zod.
+      label={required && label ? `${label} *` : label}
       error={error}
       disabled={disabled}
       onClick={onClick}
