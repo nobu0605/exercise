@@ -13,8 +13,10 @@ type Props = {
 export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
   const navigate = useNavigate()
   const [showSubmissionAlert, setShowSubmissionAlert] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
   const isFormChanged = isFormDirty(formData)
+  console.log("ConfirmBody formData:", formData)
+  console.log("isFormDirty:", isFormDirty(formData))
 
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
@@ -28,22 +30,22 @@ export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload)
   }, [isFormChanged])
 
-  if (!formData || (isFormChanged === false && !isSubmitted)) {
-    return (
-      <div className='flex flex-col gap-4'>
-        <p className='text-red-500'>No form data found. Please start again.</p>
-        <div className='flex justify-start'>
-          <Button color='inherit' onClick={() => navigate("/")}>
-            Back
-          </Button>
-        </div>
-      </div>
-    )
-  }
+  // if (!formData || (isFormChanged === false && !isSubmitted)) {
+  //   return (
+  //     <div className='flex flex-col gap-4'>
+  //       <p className='text-red-500'>No form data found. Please start again.</p>
+  //       <div className='flex justify-start'>
+  //         <Button color='inherit' onClick={() => navigate("/")}>
+  //           Back
+  //         </Button>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     handleSubmit(e)
-    setIsSubmitted(true)
+    // setIsSubmitted(true)
     setShowSubmissionAlert(true)
   }
 
