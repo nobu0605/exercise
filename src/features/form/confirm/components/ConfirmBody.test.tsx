@@ -1,6 +1,7 @@
 import { composeStories } from "@storybook/react"
 import { fireEvent, render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router"
+import { IssueType } from "../../constants/form"
 import * as stories from "./ConfirmBody.stories"
 
 const { Default, NoFormData } = composeStories(stories)
@@ -21,7 +22,7 @@ describe("ConfirmBody component", () => {
 
     // Issue Details
     expect(screen.getByText(/Issue Type:/i)).toBeInTheDocument()
-    expect(screen.getByText("Bug Report")).toBeInTheDocument()
+    expect(screen.getByText(IssueType.Bug)).toBeInTheDocument()
 
     // Tags
     expect(screen.getByText(/Tags:/i)).toBeInTheDocument()

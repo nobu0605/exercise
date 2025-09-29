@@ -1,5 +1,5 @@
 import Alert from "@mui/material/Alert"
-import { useEffect, useState } from "react"
+import { useEffect, useState, type FormEvent } from "react"
 import { useNavigate } from "react-router"
 import { Button } from "../../../../components/ui/Button"
 import { isFormDirty } from "../../utils/form"
@@ -7,7 +7,7 @@ import type { RequestFormValues } from "../../schema"
 
 type Props = {
   formData: RequestFormValues
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void
 }
 
 export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
@@ -41,7 +41,7 @@ export const ConfirmBody = ({ formData, handleSubmit }: Props) => {
     )
   }
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: FormEvent<HTMLFormElement>) {
     handleSubmit(e)
     setIsSubmitted(true)
     setShowSubmissionAlert(true)
