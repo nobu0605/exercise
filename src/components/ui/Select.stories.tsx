@@ -42,6 +42,7 @@ export const Error: Story = {
     handleChange: () => {},
     error: true,
     errorText: "This field is required",
+    required: true,
   },
   render: (args) => (
     <div style={{ width: "200px" }}>
